@@ -1,3 +1,9 @@
+// ==========================================================================
+// GOOGLE SHEETS INTEGRATION CONFIGURATION
+// Paste your Google Apps Script Web App URL below:
+// ==========================================================================
+const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypAlZfqAAAt3SwjdyrIN5Oz2CGK4SFdg93zi2Iwfe4b9rxfMpJEMfd34BctV-sEQ/exec";
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Smooth Navigation & Active Link Highlighting
   const navLinks = document.querySelectorAll(".nav-link");
@@ -152,6 +158,16 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("spacs_registrations", JSON.stringify(existing));
         } catch (err) {
           console.warn("LocalStorage access failed:", err);
+        }
+
+        // Send registration to Google Sheet via Apps Script Webhook
+        if (GOOGLE_SHEETS_SCRIPT_URL && GOOGLE_SHEETS_SCRIPT_URL.trim() !== "") {
+          fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(registrationData),
+          }).catch((err) => console.error("Google Sheets Submission Error:", err));
         }
 
         // Reset form
