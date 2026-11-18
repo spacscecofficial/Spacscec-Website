@@ -738,149 +738,81 @@ section, main, footer {
 }
 
 /* ==========================================================================
-   OUR STORY SECTION (About SPACS & Core Mission)
+   ABOUT & INITIATIVES SECTION (Merged Our Story & What We Do)
    ========================================================================== */
-.story-grid {
+
+/* Row 1: 12-Column Asymmetric Split */
+.about-split-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: clamp(24px, 3.5vw, 48px);
-  align-items: center;
-  max-width: 1400px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+  align-items: stretch;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
-.story-left-col {
+/* Left Card (Who We Are - 7 cols) */
+.who-we-are-card {
+  grid-column: span 7 / span 7;
+  padding: clamp(24px, 3.2vw, 40px);
   display: flex;
   flex-direction: column;
-}
-
-.story-heading {
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
-  font-weight: 800;
-  color: var(--text-white);
-  margin-bottom: 12px;
-}
-
-.story-description {
-  font-size: clamp(15px, 1.1vw, 17px);
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.55;
-  margin-bottom: 22px;
-}
-
-.feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.feature-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.feature-icon-box {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  background: rgba(0, 229, 163, 0.12);
-  border: 1.5px solid rgba(0, 229, 163, 0.35);
-  color: var(--accent-green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.feature-item:hover .feature-icon-box {
-  transform: scale(1.1);
-  background: rgba(0, 229, 163, 0.25);
-  box-shadow: 0 0 20px rgba(0, 229, 163, 0.4);
-}
-
-.feature-title {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--text-white);
-  margin-bottom: 2px;
-}
-
-.feature-desc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.45;
-}
-
-/* Mission Outer Box Card (Right Column) */
-.story-right-col {
-  display: flex;
-  justify-content: center;
-}
-
-.mission-box {
-  padding: clamp(20px, 2.5vw, 30px);
-  width: 100%;
+  justify-content: space-between;
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-  border-radius: 28px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-}
-
-/* Inner Translucent Mission Card */
-.mission-highlight-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 229, 163, 0.12));
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(0, 229, 163, 0.4);
-  border-radius: 20px;
-  padding: clamp(20px, 2.5vw, 28px);
-  margin-bottom: 20px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-  position: relative;
-  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mission-title {
+.who-we-are-card:hover {
+  border-color: rgba(0, 229, 163, 0.45);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 229, 163, 0.12);
+}
+
+.about-card-title {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
   font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 8px;
+  color: var(--text-white);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
 
-.mission-desc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.95);
-  line-height: 1.5;
+.about-card-desc {
+  font-family: var(--font-body);
+  font-size: clamp(14.5px, 1.05vw, 16.5px);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-/* Mission Checkmark Bullet Points */
-.mission-highlights-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+.who-highlights-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 24px 0 20px 0;
+}
+
+.who-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  padding: 0 4px;
 }
 
-.mission-highlights-list li {
+.who-highlight-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14.5px;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
 }
 
-.check-icon {
-  width: 24px;
-  height: 24px;
+.check-icon-circle {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: rgba(0, 229, 163, 0.18);
   border: 1.5px solid var(--accent-green);
@@ -892,72 +824,208 @@ section, main, footer {
   box-shadow: 0 0 10px rgba(0, 229, 163, 0.3);
 }
 
-/* ==========================================================================
-   WHAT WE DO SECTION (4 Pillars Grid)
-   ========================================================================== */
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(16px, 2vw, 26px);
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.pillar-card {
-  padding: clamp(24px, 2.8vw, 34px) clamp(20px, 2.2vw, 28px);
+/* Right Card (Our Core Mission - 5 cols) */
+.core-mission-card {
+  grid-column: span 5 / span 5;
+  padding: clamp(22px, 2.8vw, 32px);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+  justify-content: space-between;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(0, 229, 163, 0.08));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(0, 229, 163, 0.5);
+  border-radius: 28px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 229, 163, 0.15);
+  position: relative;
+  transition: all 0.35s ease;
 }
 
-.pillar-card:hover {
-  transform: translateY(-8px);
+.core-mission-card:hover {
   border-color: var(--accent-green);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 229, 163, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 35px rgba(0, 229, 163, 0.25);
+  transform: translateY(-2px);
 }
 
-.pillar-icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 15px;
+.mission-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 18px;
+}
+
+.mission-file-name {
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--accent-green);
+  letter-spacing: 0.05em;
+}
+
+.window-dots-group {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.window-dot.red { background: #ff5f56; }
+.window-dot.yellow { background: #ffbd2e; }
+.window-dot.green { background: #27c93f; }
+
+.mission-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.mission-card-desc {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1vw, 15.5px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 20px;
+}
+
+.mission-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.mission-status-code {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+.mission-dept-tag {
+  letter-spacing: 0.06em;
+}
+
+/* Row 2: 4-Column Horizontal Pillars Grid */
+.pillars-section-wrapper {
+  margin-top: clamp(40px, 5vw, 64px);
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pillars-sub-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.pillars-sub-tag {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--accent-green);
+  background: rgba(0, 229, 163, 0.12);
+  border: 1px solid rgba(0, 229, 163, 0.35);
+  padding: 6px 18px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.pillars-grid-v2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  align-items: stretch;
+}
+
+.pillar-card-v2 {
+  padding: clamp(22px, 2.5vw, 30px) clamp(18px, 2vw, 24px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+}
+
+.pillar-card-v2:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 229, 163, 0.6);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), 0 0 22px rgba(0, 229, 163, 0.2);
+}
+
+.pillar-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.pillar-icon-box-v2 {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
   background: rgba(0, 229, 163, 0.14);
   border: 1.5px solid rgba(0, 229, 163, 0.4);
   color: var(--accent-green);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  box-shadow: 0 0 14px rgba(0, 229, 163, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 229, 163, 0.2);
+  flex-shrink: 0;
 }
 
-.pillar-card:hover .pillar-icon-box {
-  transform: scale(1.1);
+.pillar-card-v2:hover .pillar-icon-box-v2 {
   background: var(--accent-green);
   color: #02237d;
-  box-shadow: 0 0 24px rgba(0, 229, 163, 0.5);
+  box-shadow: 0 0 20px rgba(0, 229, 163, 0.45);
+  transform: scale(1.06);
 }
 
-.pillar-title {
+.pillar-mono-pill {
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.02em;
+}
+
+.pillar-card-title {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: clamp(17px, 1.25vw, 20px);
   font-weight: 800;
-  color: var(--text-white);
-  margin-bottom: 8px;
-  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
-.pillar-desc {
+.pillar-card-desc {
+  font-family: var(--font-body);
   font-size: 14px;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.82);
-  line-height: 1.5;
+  margin-top: auto;
 }
 
 /* ==========================================================================
@@ -2086,9 +2154,17 @@ section, main, footer {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .story-grid {
+  .about-split-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
+  }
+  .who-we-are-card,
+  .core-mission-card {
+    grid-column: span 1 / -1;
+  }
+  .pillars-grid-v2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
   .nodal-card {
     grid-template-columns: 1fr;
@@ -2230,17 +2306,21 @@ section, main, footer {
     width: 20px;
     height: 20px;
   }
-  .pillars-grid,
+  .who-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .pillars-grid-v2,
   .partners-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
-  .pillar-card,
+  .pillar-card-v2,
   .partner-card {
     padding: 18px 16px;
     border-radius: 18px;
   }
-  .pillar-icon-box,
+  .pillar-icon-box-v2,
   .partner-logo-box {
     width: 44px;
     height: 44px;
