@@ -21,11 +21,19 @@
     <!-- Navigation Header -->
     <header class="navbar">
       <div class="logo-container">
-        <a href="#home">
+        <a href="#home" title="SPACS CEC Home">
           <img src="https://static.codia.ai/image/2026-07-22/8J4467mmFe.png" alt="SPACS CEC Logo" class="logo-img" />
         </a>
       </div>
-      <nav class="nav-menu">
+
+      <!-- Mobile Menu Toggle Button (Translucent Waterdrop Capsule with 3 Lines) -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
         <a href="#home" class="nav-link active">HOME</a>
         <a href="#our-story" class="nav-link">DISCOVER</a>
         <a href="#annual-report" class="nav-link">ANNUAL REPORT</a>
@@ -37,6 +45,9 @@
         <a href="#register" class="nav-link">MEMBERSHIP</a>
         <a href="#contact" class="nav-link">CONTACT</a>
       </nav>
+
+      <!-- Mobile Menu Backdrop Overlay -->
+      <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
     </header>
 
     <!-- Main Hero Stage -->

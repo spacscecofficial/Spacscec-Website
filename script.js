@@ -52,16 +52,83 @@ document.addEventListener("DOMContentLoaded", () => {
   handleNavbarScroll();
   changeActiveNav();
 
+  // Mobile Hamburger Menu Toggle
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const navMenu = document.getElementById("navMenu");
+  const mobileMenuBackdrop = document.getElementById("mobileMenuBackdrop");
+
+  function openMobileMenu() {
+    if (mobileMenuBtn && navMenu) {
+      mobileMenuBtn.classList.add("active");
+      mobileMenuBtn.setAttribute("aria-expanded", "true");
+      navMenu.classList.add("open");
+      if (mobileMenuBackdrop) mobileMenuBackdrop.classList.add("active");
+    }
+  }
+
+  function closeMobileMenu() {
+    if (mobileMenuBtn && navMenu) {
+      mobileMenuBtn.classList.remove("active");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      navMenu.classList.remove("open");
+      if (mobileMenuBackdrop) mobileMenuBackdrop.classList.remove("active");
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu && navMenu.classList.contains("open");
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+  }
+
+  if (mobileMenuBackdrop) {
+    mobileMenuBackdrop.addEventListener("click", () => {
+      closeMobileMenu();
+    });
+  }
+
+  // Close menu when tapping anywhere outside
+  document.addEventListener("click", (e) => {
+    if (navMenu && navMenu.classList.contains("open")) {
+      if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        closeMobileMenu();
+      }
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+
+  // Close when window resized to desktop (> 768px)
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  });
+
   // Smooth scroll click handler
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       const targetId = link.getAttribute("href");
       if (targetId.startsWith("#")) {
         e.preventDefault();
+        closeMobileMenu();
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: "smooth" });
         }
+      } else {
+        closeMobileMenu();
       }
     });
   });

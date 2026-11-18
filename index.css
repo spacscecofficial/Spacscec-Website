@@ -157,6 +157,15 @@ section, main, footer {
   transform: translateY(-1px);
 }
 
+/* Mobile Menu Button - Hidden on Desktop (> 768px) */
+.mobile-menu-btn {
+  display: none;
+}
+
+.mobile-menu-backdrop {
+  display: none;
+}
+
 .nav-link {
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
@@ -590,18 +599,25 @@ section, main, footer {
 
 /* Phone & Mobile Viewport: Strict Orientation Parity */
 @media (max-width: 768px) {
-  /* 1. Header & Navigation Bar (Single Row, Logo Left, Links Right) */
+  /* 1. Header & Navigation Bar (Logo Left, Translucent Waterdrop Menu Key Right) */
   .navbar {
-    padding: 10px 14px !important;
+    padding: 12px 16px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     background: transparent !important;
     border: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    pointer-events: none !important;
   }
 
   .navbar.scrolled {
-    padding: 8px 14px !important;
+    padding: 9px 16px !important;
     background: transparent !important;
     border: none !important;
   }
@@ -610,6 +626,7 @@ section, main, footer {
     display: flex !important;
     align-items: center !important;
     flex-shrink: 0 !important;
+    pointer-events: auto !important;
   }
 
   .logo-container a {
@@ -621,38 +638,155 @@ section, main, footer {
     width: auto !important;
   }
 
-  .nav-menu {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
+  /* Translucent Waterdrop Curved Edges Menu Key at Top-Right Corner */
+  .mobile-menu-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
     align-items: center !important;
-    gap: 0.5rem !important; /* Tight link gaps */
-    padding: 4px 8px !important;
-    border-radius: 9999px !important;
-    max-width: calc(100% - 58px) !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    scrollbar-width: none !important;
-    -webkit-overflow-scrolling: touch !important;
+    gap: 4.5px !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    border-radius: 9999px !important; /* Waterdrop curved edges */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(2, 26, 96, 0.58) 40%, rgba(1, 16, 68, 0.75) 100%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.48) !important;
+    border-bottom: 1px solid rgba(0, 229, 163, 0.25) !important;
+    box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.4), inset 0 1.2px 2px rgba(255, 255, 255, 0.4) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 1002 !important;
+    margin-left: auto !important;
   }
 
-  .nav-menu::-webkit-scrollbar {
+  .mobile-menu-btn:hover,
+  .mobile-menu-btn:active {
+    transform: scale(1.05) translateY(-1px) !important;
+    border-color: rgba(0, 229, 163, 0.5) !important;
+    box-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 229, 163, 0.3), inset 0 1.5px 2px rgba(255, 255, 255, 0.5) !important;
+  }
+
+  /* 3 Horizontal Lines */
+  .hamburger-bar {
+    display: block !important;
+    width: 19px !important;
+    height: 2px !important;
+    background: #ffffff !important;
+    border-radius: 2px !important;
+    transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.25s ease !important;
+    transform-origin: center !important;
+  }
+
+  /* Transform into 'X' when open */
+  .mobile-menu-btn.active .hamburger-bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg) !important;
+    background: var(--accent-green) !important;
+  }
+
+  .mobile-menu-btn.active .hamburger-bar:nth-child(2) {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+
+  .mobile-menu-btn.active .hamburger-bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg) !important;
+    background: var(--accent-green) !important;
+  }
+
+  .mobile-menu-btn.active {
+    border-color: var(--accent-green) !important;
+    box-shadow: 0 0 20px rgba(0, 229, 163, 0.4), inset 0 1.2px 2px rgba(255, 255, 255, 0.45) !important;
+  }
+
+  /* Navigation Menu Container - Collapsed by Default on Mobile */
+  .nav-menu {
     display: none !important;
   }
 
-  .nav-link {
-    font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important;
-    padding: 4px 7px !important;
-    border-radius: 9999px !important;
-    flex-shrink: 0 !important;
+  /* Opened Mobile Menu - Translucent Waterdrop Dropdown Capsule */
+  .nav-menu.open {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 66px !important;
+    right: 14px !important;
+    width: min(290px, calc(100vw - 28px)) !important;
+    max-height: calc(100vh - 82px) !important;
+    overflow-y: auto !important;
+    padding: 14px 12px !important;
+    border-radius: 22px !important; /* Waterdrop curved edges */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(2, 22, 82, 0.92) 35%, rgba(1, 14, 56, 0.97) 100%) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.48) !important;
+    border-bottom: 1.5px solid rgba(0, 229, 163, 0.35) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 229, 163, 0.2), inset 0 1.5px 2px rgba(255, 255, 255, 0.45) !important;
+    gap: 5px !important;
+    z-index: 1001 !important;
+    pointer-events: auto !important;
+    animation: waterdropDropdown 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
   }
 
-  .nav-link.active {
-    background: transparent !important;
+  @keyframes waterdropDropdown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .nav-menu.open .nav-link {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    padding: 9px 14px !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .nav-menu.open .nav-link:hover,
+  .nav-menu.open .nav-link:active {
+    background: rgba(0, 229, 163, 0.16) !important;
     color: var(--accent-green) !important;
-    border-color: transparent !important;
+    border-color: rgba(0, 229, 163, 0.35) !important;
+    transform: translateX(3px) !important;
+  }
+
+  .nav-menu.open .nav-link.active {
+    color: var(--accent-green) !important;
     font-weight: 800 !important;
-    box-shadow: none !important;
+    background: rgba(0, 229, 163, 0.14) !important;
+    border-color: rgba(0, 229, 163, 0.35) !important;
+    text-shadow: 0 0 10px rgba(0, 229, 163, 0.4) !important;
+  }
+
+  .mobile-menu-backdrop {
+    display: none;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+  }
+
+  .mobile-menu-backdrop.active {
+    display: block !important;
   }
 
   /* 2. Hero Section: Exact Desktop Spatial Positions & Proportional Scaling */
@@ -759,7 +893,7 @@ section, main, footer {
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 8px 10px !important;
+    padding: 8px 12px !important;
   }
 
   .logo-container a {
@@ -770,15 +904,35 @@ section, main, footer {
     height: 26px !important;
   }
 
-  .nav-menu {
-    max-width: calc(100% - 50px) !important;
-    gap: 0.4rem !important;
-    padding: 3px 6px !important;
+  .mobile-menu-btn {
+    width: 38px !important;
+    height: 38px !important;
+    gap: 4px !important;
   }
 
-  .nav-link {
-    font-size: clamp(0.58rem, 2vw, 0.7rem) !important;
-    padding: 3px 6px !important;
+  .hamburger-bar {
+    width: 17px !important;
+  }
+
+  .mobile-menu-btn.active .hamburger-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg) !important;
+  }
+
+  .mobile-menu-btn.active .hamburger-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg) !important;
+  }
+
+  .nav-menu.open {
+    top: 58px !important;
+    right: 10px !important;
+    width: calc(100vw - 20px) !important;
+    padding: 12px 10px !important;
+    border-radius: 20px !important;
+  }
+
+  .nav-menu.open .nav-link {
+    font-size: 12.5px !important;
+    padding: 8px 12px !important;
   }
 
   .hero-stage {
