@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Calculate active member card index based on scroll position
-      const cardWidth = cards[0] ? cards[0].offsetWidth + 24 : 314;
+      const cardWidth = cards[0] ? cards[0].offsetWidth + 18 : 280;
       const activeIdx = Math.min(totalCards - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
 
       if (excomDotsContainer) {
@@ -257,16 +257,18 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", updateExComSliderState);
     updateExComSliderState();
 
-    // Button Navigation Controls (Scroll 1 full page of 4 cards at a time)
+    // Button Navigation Controls (Scroll adaptively: 1-2 cards on mobile, 1 full page on desktop)
     if (excomPrevBtn) {
       excomPrevBtn.addEventListener("click", () => {
-        excomTrack.scrollBy({ left: -excomTrack.clientWidth, behavior: "smooth" });
+        const scrollAmount = excomTrack.clientWidth > 768 ? excomTrack.clientWidth : Math.max(cards[0]?.offsetWidth || 260, excomTrack.clientWidth * 0.75);
+        excomTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
       });
     }
 
     if (excomNextBtn) {
       excomNextBtn.addEventListener("click", () => {
-        excomTrack.scrollBy({ left: excomTrack.clientWidth, behavior: "smooth" });
+        const scrollAmount = excomTrack.clientWidth > 768 ? excomTrack.clientWidth : Math.max(cards[0]?.offsetWidth || 260, excomTrack.clientWidth * 0.75);
+        excomTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
       });
     }
 
@@ -298,6 +300,63 @@ document.addEventListener("DOMContentLoaded", () => {
       const x = e.pageX - excomTrack.offsetLeft;
       const walk = (x - startX) * 2.2;
       excomTrack.scrollLeft = startScrollLeft - walk;
+    });
+  }
+
+  // 4. Annual Tenure Report Print & Image Lightbox Modal
+  const printReportBtn = document.getElementById("printReportBtn");
+  if (printReportBtn) {
+    printReportBtn.addEventListener("click", () => {
+      window.print();
+    });
+  }
+
+  const reportModal = document.getElementById("reportImageModal");
+  const closeReportModalBtn = document.getElementById("closeReportModalBtn");
+  const reportModalImg = document.getElementById("reportModalImg");
+  const reportModalTitle = document.getElementById("reportModalTitle");
+  const reportModalTag = document.getElementById("reportModalTag");
+  const reportModalDesc = document.getElementById("reportModalDesc");
+  const reportMediaWraps = document.querySelectorAll(".report-media-wrap");
+
+  if (reportModal && reportModalImg) {
+    reportMediaWraps.forEach((wrap) => {
+      wrap.addEventListener("click", () => {
+        const imgSrc = wrap.getAttribute("data-report-img");
+        const title = wrap.getAttribute("data-report-title") || "Event Photo";
+        const tag = wrap.getAttribute("data-report-tag") || "SPACS ARCHIVE";
+        const desc = wrap.getAttribute("data-report-desc") || "";
+
+        reportModalImg.src = imgSrc;
+        if (reportModalTitle) reportModalTitle.textContent = title;
+        if (reportModalTag) reportModalTag.textContent = tag;
+        if (reportModalDesc) reportModalDesc.textContent = desc;
+
+        reportModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    const closeReportModal = () => {
+      reportModal.classList.add("hidden");
+      document.body.style.overflow = "";
+      reportModalImg.src = "";
+    };
+
+    if (closeReportModalBtn) {
+      closeReportModalBtn.addEventListener("click", closeReportModal);
+    }
+
+    reportModal.addEventListener("click", (e) => {
+      if (e.target === reportModal) {
+        closeReportModal();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !reportModal.classList.contains("hidden")) {
+        closeReportModal();
+      }
     });
   }
 });
