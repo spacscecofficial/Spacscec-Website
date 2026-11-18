@@ -8,10 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Smooth Navigation & Active Link Highlighting
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll("main, section, footer");
+  const navbar = document.querySelector(".navbar");
+
+  function handleNavbarScroll() {
+    if (navbar) {
+      if (window.scrollY > 25) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+  }
 
   function changeActiveNav() {
     let currentSectionId = "home";
-    const scrollPosition = window.scrollY + 200;
+    const scrollPosition = window.scrollY + 120;
 
     sections.forEach((section) => {
       if (section.id) {
@@ -26,17 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach((link) => {
       link.classList.remove("active");
       const targetHref = link.getAttribute("href");
-      if (
-        targetHref === `#${currentSectionId}` ||
-        ((currentSectionId === "nodal-officer" || currentSectionId === "excom") &&
-          (targetHref === "#nodal-officer" || targetHref === "#excom"))
-      ) {
+      if (targetHref === `#${currentSectionId}`) {
         link.classList.add("active");
       }
     });
   }
 
-  window.addEventListener("scroll", changeActiveNav);
+  window.addEventListener("scroll", () => {
+    handleNavbarScroll();
+    changeActiveNav();
+  });
+
+  // Run on initial load
+  handleNavbarScroll();
+  changeActiveNav();
 
   // Smooth scroll click handler
   navLinks.forEach((link) => {
