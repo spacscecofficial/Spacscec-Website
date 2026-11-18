@@ -2718,8 +2718,9 @@ section, main, footer {
 
 .report-event-card {
   display: grid;
-  grid-template-columns: minmax(290px, 400px) 1fr;
-  gap: clamp(20px, 3.5vw, 36px);
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  align-items: center;
+  gap: clamp(20px, 3vw, 36px);
   padding: clamp(20px, 3vw, 32px);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.07);
@@ -2735,7 +2736,7 @@ section, main, footer {
   transform: translateY(-3px);
 }
 
-/* Event Media Wrapper - Orientation Protection */
+/* Event Media Wrapper - Orientation Protection & Anti-Blowout */
 .report-media-wrap {
   position: relative;
   border-radius: 18px;
@@ -2746,13 +2747,18 @@ section, main, footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 280px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Portrait orientation handling */
 .report-media-portrait {
   aspect-ratio: 4 / 5;
-  max-height: 480px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 440px;
 }
 
 .report-media-portrait .report-event-img {
@@ -2765,7 +2771,9 @@ section, main, footer {
 /* Landscape orientation handling */
 .report-media-landscape {
   aspect-ratio: 16 / 10;
-  max-height: 380px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 320px;
 }
 
 .report-media-landscape .report-event-img {
@@ -2778,7 +2786,9 @@ section, main, footer {
 /* Square / Classroom orientation handling */
 .report-media-square {
   aspect-ratio: 1 / 1;
-  max-height: 400px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 360px;
 }
 
 .report-media-square .report-event-img {
@@ -2789,6 +2799,10 @@ section, main, footer {
 }
 
 .report-event-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2880,12 +2894,15 @@ section, main, footer {
   flex-direction: column;
   justify-content: center;
   gap: 14px;
+  min-width: 0;
+  width: 100%;
 }
 
 .report-card-header {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .report-program-type {
@@ -2903,6 +2920,8 @@ section, main, footer {
   font-weight: 800;
   color: #ffffff;
   line-height: 1.25;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Metadata Grid */
@@ -2956,16 +2975,20 @@ section, main, footer {
   background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(0, 229, 163, 0.1));
   border: 1px solid rgba(0, 240, 255, 0.35);
   border-radius: 12px;
+  min-width: 0;
 }
 
 .highlight-icon {
   font-size: 22px;
+  flex-shrink: 0;
 }
 
 .highlight-text {
   font-size: 13.5px;
   color: #ffffff;
   line-height: 1.45;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .highlight-text strong {
@@ -3164,10 +3187,17 @@ section, main, footer {
 @media (max-width: 992px) {
   .report-event-card {
     grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+  .report-media-wrap {
+    width: 100%;
+    max-width: 100%;
   }
   .report-media-portrait,
   .report-media-landscape,
   .report-media-square {
+    width: 100%;
+    max-width: 100%;
     max-height: 360px;
     aspect-ratio: 16 / 10;
   }
