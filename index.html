@@ -15,6 +15,12 @@
 
 <body>
   <div class="main-container">
+    <!-- Top Glowing Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+    <!-- Mouse Ambient Spotlight Glow (Desktop) -->
+    <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
+
     <!-- Open-Ended Full-Bleed Grid Background -->
     <div class="grid-overlay"></div>
 
@@ -37,6 +43,28 @@
 
     <!-- Main Hero Stage -->
     <main class="hero-stage" id="home">
+
+      <!-- Interactive 3D Cyber Stage Canvas (Hero Centerpiece) -->
+      <div class="hero-3d-stage" id="hero3DStage" aria-hidden="true">
+        <canvas id="spacs3DCanvas" class="spacs-3d-canvas"></canvas>
+        <div class="canvas-glow-orb"></div>
+      </div>
+
+      <!-- Floating 3D Holographic Tech Badges -->
+      <div class="floating-3d-elements" aria-hidden="true">
+        <div class="float-3d-badge badge-code" data-parallax="0.22" title="Code Blocks">
+          <span class="badge-3d-inner">{ }</span>
+        </div>
+        <div class="float-3d-badge badge-terminal" data-parallax="0.16" title="Markup / Components">
+          <span class="badge-3d-inner">&lt;/&gt;</span>
+        </div>
+        <div class="float-3d-badge badge-binary" data-parallax="0.28" title="Machine Logic">
+          <span class="badge-3d-inner">01_</span>
+        </div>
+        <div class="float-3d-badge badge-algo" data-parallax="0.14" title="Algorithms">
+          <span class="badge-3d-inner">&lambda;</span>
+        </div>
+      </div>
 
       <!-- Green Hashtag Doodle Asset -->
       <div class="doodle doodle-hashtag" aria-hidden="true">
