@@ -3225,6 +3225,230 @@ section, main, footer {
 }
 
 /* ==========================================================================
+   EVENT POSTERS PHOTO DUMP SECTION
+   ========================================================================== */
+
+.posters-section {
+  position: relative;
+  padding: clamp(60px, 8vw, 100px) 0;
+}
+
+.posters-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
+  margin-bottom: 28px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  flex-wrap: wrap;
+}
+
+.posters-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.posters-stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 700;
+  background: rgba(0, 229, 163, 0.12);
+  border: 1px solid rgba(0, 229, 163, 0.4);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.posters-stat-chip strong {
+  color: var(--accent-green);
+  font-size: 15px;
+}
+
+.posters-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-body);
+}
+
+.posters-hint svg {
+  color: var(--accent-green);
+  flex-shrink: 0;
+}
+
+/* 4 Posters Aligned in a Row Grid */
+.posters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.5vw, 18px);
+  width: 100%;
+}
+
+.poster-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-card:hover {
+  border-color: rgba(0, 229, 163, 0.55);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 26px rgba(0, 229, 163, 0.22);
+  z-index: 5;
+}
+
+.poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.poster-card:hover .poster-img {
+  transform: scale(1.08);
+}
+
+.poster-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(2, 30, 102, 0.92) 0%, rgba(4, 61, 204, 0.35) 50%, rgba(0, 0, 0, 0.15) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 3;
+}
+
+.poster-card:hover .poster-overlay {
+  opacity: 1;
+}
+
+.poster-overlay-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.poster-num {
+  background: rgba(4, 61, 204, 0.9);
+  color: var(--accent-green);
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 229, 163, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.poster-tag {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.poster-overlay-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-zoom-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 229, 163, 0.22);
+  border: 1px solid var(--accent-green);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 229, 163, 0.25);
+  transition: all 0.25s ease;
+}
+
+.poster-card:hover .poster-zoom-action {
+  transform: scale(1.05);
+  background: rgba(0, 229, 163, 0.4);
+}
+
+.poster-zoom-action svg {
+  color: var(--accent-green);
+}
+
+/* Responsive Poster Grid */
+@media (max-width: 1024px) {
+  .posters-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .posters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .posters-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .posters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .poster-card {
+    border-radius: 12px;
+  }
+  .poster-overlay {
+    padding: 8px;
+  }
+  .poster-zoom-action span {
+    display: none;
+  }
+  .poster-zoom-action {
+    padding: 6px 8px;
+  }
+}
+
+/* ==========================================================================
    PRINT MEDIA STYLES (PDF & PRINT FRIENDLY REPORT)
    ========================================================================== */
 

@@ -342,6 +342,25 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    // 5. Event Posters Photo Dump Lightbox Triggers
+    const posterCards = document.querySelectorAll(".poster-card");
+    posterCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const imgSrc = card.getAttribute("data-poster-img");
+        const title = card.getAttribute("data-poster-title") || "SPACS Event Poster";
+        const tag = card.getAttribute("data-poster-tag") || "OFFICIAL POSTER";
+        const desc = card.getAttribute("data-poster-desc") || "Official event announcement poster released by SPACS CEC department archives.";
+
+        reportModalImg.src = imgSrc;
+        if (reportModalTitle) reportModalTitle.textContent = title;
+        if (reportModalTag) reportModalTag.textContent = tag;
+        if (reportModalDesc) reportModalDesc.textContent = desc;
+
+        reportModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
     const closeReportModal = () => {
       reportModal.classList.add("hidden");
       document.body.style.overflow = "";
