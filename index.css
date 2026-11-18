@@ -543,13 +543,13 @@ section, main, footer {
 
 @media (max-width: 992px) {
   .navbar {
-    padding: 8px 14px;
+    padding: 10px 16px;
   }
   .navbar.scrolled {
-    padding: 6px 14px;
+    padding: 8px 16px;
   }
   .nav-menu {
-    gap: 5px;
+    gap: 0.5rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -565,8 +565,6 @@ section, main, footer {
     font-size: 11.5px;
     padding: 4px 8px;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.16);
     flex-shrink: 0;
   }
   .hero-stage {
@@ -579,110 +577,253 @@ section, main, footer {
   .text-line {
     font-size: clamp(2rem, 7.2vw, 4.2rem);
   }
-  .line-1 { top: 12%; left: 16%; }
+  .line-1 { top: 10%; left: 18%; }
   .line-2 { top: 35%; left: 4%; }
-  .line-3 { top: 58%; left: 8%; }
-  .doodle-hashtag { top: 4%; left: 4%; width: clamp(80px, 13vw, 140px); }
-  .doodle-loop { top: 8%; left: 62%; width: clamp(90px, 15vw, 170px); }
-  .doodle-arrow { top: 58%; left: -2%; width: clamp(110px, 20vw, 220px); }
+  .line-3 { top: 60%; left: 10%; }
+  .doodle-hashtag { top: 3%; left: 4%; width: clamp(70px, 12vw, 130px); }
+  .doodle-loop { top: 8%; left: 62%; width: clamp(80px, 14vw, 160px); }
+  .doodle-arrow { top: 58%; left: -2%; width: clamp(100px, 18vw, 200px); }
   .card-byte { top: 15%; left: 56%; width: clamp(110px, 14vw, 160px); }
-  .card-nova { top: 52%; left: 26%; width: clamp(110px, 14vw, 160px); }
+  .card-nova { top: 50%; left: 28%; width: clamp(110px, 14vw, 160px); }
   .seal-badge { top: 60%; left: 72%; width: clamp(95px, 13vw, 145px); }
 }
 
-@media (max-width: 600px) {
+/* Phone & Mobile Viewport: Strict Orientation Parity */
+@media (max-width: 768px) {
+  /* 1. Header & Navigation Bar (Single Row, Logo Left, Links Right) */
   .navbar {
-    padding: 6px 10px;
-    gap: 6px;
+    padding: 10px 14px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: none !important;
   }
+
   .navbar.scrolled {
-    padding: 5px 10px;
+    padding: 8px 14px !important;
+    background: transparent !important;
+    border: none !important;
   }
+
+  .logo-container {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+
   .logo-container a {
-    padding: 4px 8px;
+    padding: 4px 10px !important;
   }
+
   .logo-img {
-    height: 28px;
+    height: 28px !important;
+    width: auto !important;
   }
+
   .nav-menu {
-    gap: 4px;
-    max-width: calc(100% - 48px);
-    padding: 3px 6px;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 0.5rem !important; /* Tight link gaps */
+    padding: 4px 8px !important;
+    border-radius: 9999px !important;
+    max-width: calc(100% - 58px) !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
   }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none !important;
+  }
+
   .nav-link {
-    font-size: 10.5px;
-    padding: 3px 7px;
-    border-radius: 9999px;
+    font-size: clamp(0.6rem, 2.2vw, 0.75rem) !important;
+    padding: 4px 7px !important;
+    border-radius: 9999px !important;
+    flex-shrink: 0 !important;
   }
+
   .nav-link.active {
-    background: transparent;
-    color: var(--accent-green);
-    border-color: transparent;
-    font-weight: 800;
-    box-shadow: none;
+    background: transparent !important;
+    color: var(--accent-green) !important;
+    border-color: transparent !important;
+    font-weight: 800 !important;
+    box-shadow: none !important;
   }
+
+  /* 2. Hero Section: Exact Desktop Spatial Positions & Proportional Scaling */
   .hero-stage {
-    min-height: 440px;
-    padding: 65px 10px 8px 10px;
+    min-height: clamp(390px, 62vh, 520px) !important;
+    padding: 68px 12px 10px 12px !important;
   }
+
   .hero-typography {
-    min-height: 420px;
+    min-height: clamp(370px, 58vh, 490px) !important;
+    position: relative !important;
+    width: 100% !important;
   }
+
   .text-line {
-    font-size: clamp(1.65rem, 7.2vw, 2.5rem);
-    letter-spacing: -0.03em;
+    font-size: clamp(1.75rem, 8.5vw, 4.5rem) !important;
+    letter-spacing: -0.035em !important;
+    line-height: 0.92 !important;
   }
-  .line-1 { top: 10%; left: 4%; }
-  .line-2 { top: 29%; left: 4%; }
-  .line-3 { top: 48%; left: 4%; }
-  .doodle-hashtag { top: 2%; left: 2%; width: 55px; opacity: 0.65; }
-  .doodle-loop { top: 25%; right: 2%; left: auto; width: 65px; opacity: 0.55; }
-  .doodle-arrow { top: 52%; left: 40%; width: 85px; opacity: 0.55; }
+
+  /* Keep exact relative spatial coordinates matching desktop */
+  .line-1 {
+    top: 9% !important;
+    left: 17% !important;
+    right: auto !important;
+  }
+
+  .line-2 {
+    top: 35% !important;
+    left: 4% !important;
+    right: auto !important;
+  }
+
+  .line-3 {
+    top: 61% !important;
+    left: 9% !important;
+    right: auto !important;
+  }
+
+  .doodle-hashtag {
+    top: 3% !important;
+    left: 4% !important;
+    width: clamp(50px, 12vw, 75px) !important;
+    opacity: 0.6 !important;
+  }
+
+  .doodle-loop {
+    top: 10% !important;
+    left: 64% !important;
+    right: auto !important;
+    width: clamp(55px, 13vw, 85px) !important;
+    opacity: 0.55 !important;
+  }
+
+  .doodle-arrow {
+    top: 55% !important;
+    left: 0% !important;
+    width: clamp(65px, 16vw, 110px) !important;
+    opacity: 0.55 !important;
+  }
+
+  /* Proportional Avatar Cards & Emblem preserving spatial layout */
   .card-byte {
-    top: 4%;
-    right: 4%;
-    left: auto;
-    width: clamp(95px, 28vw, 120px);
-    border-radius: 18px;
-    padding: 7px 5px;
-    transform: rotate(10deg);
+    top: 14% !important;
+    left: 56% !important;
+    right: auto !important;
+    width: clamp(96px, 24vw, 145px) !important;
+    transform: rotate(15deg) !important;
+    border-radius: 16px !important;
+    padding: 6px 5px !important;
   }
+
   .card-nova {
-    top: 66%;
-    left: 4%;
-    width: clamp(100px, 29vw, 125px);
-    border-radius: 18px;
-    padding: 7px 5px;
-    transform: rotate(-6deg);
+    top: 49% !important;
+    left: 28% !important;
+    right: auto !important;
+    width: clamp(98px, 24vw, 145px) !important;
+    transform: rotate(-7.5deg) !important;
+    border-radius: 16px !important;
+    padding: 6px 5px !important;
   }
+
   .seal-badge {
-    top: 66%;
-    right: 6%;
-    left: auto;
-    width: clamp(88px, 25vw, 110px);
+    top: 59% !important;
+    left: 71% !important;
+    right: auto !important;
+    width: clamp(84px, 21vw, 125px) !important;
   }
+
   .glass-card .avatar-container {
-    width: clamp(48px, 13vw, 56px);
-    height: clamp(48px, 13vw, 56px);
-    margin-bottom: 4px;
+    width: clamp(38px, 9vw, 50px) !important;
+    height: clamp(38px, 9vw, 50px) !important;
+    margin-bottom: 3px !important;
   }
+
   .glass-card .member-name {
-    font-size: 12px;
+    font-size: clamp(10.5px, 2.7vw, 13.5px) !important;
   }
+
   .glass-card .member-role {
-    font-size: 9.5px;
+    font-size: clamp(8px, 2vw, 10.5px) !important;
   }
 }
 
-@media (max-width: 380px) {
-  .text-line {
-    font-size: clamp(1.45rem, 6.8vw, 1.8rem);
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 10px !important;
   }
-  .card-byte { width: 90px; }
-  .card-nova { width: 92px; }
-  .seal-badge { width: 82px; }
-  .hero-stage { min-height: 410px; }
-  .hero-typography { min-height: 390px; }
+
+  .logo-container a {
+    padding: 3px 8px !important;
+  }
+
+  .logo-img {
+    height: 26px !important;
+  }
+
+  .nav-menu {
+    max-width: calc(100% - 50px) !important;
+    gap: 0.4rem !important;
+    padding: 3px 6px !important;
+  }
+
+  .nav-link {
+    font-size: clamp(0.58rem, 2vw, 0.7rem) !important;
+    padding: 3px 6px !important;
+  }
+
+  .hero-stage {
+    min-height: clamp(350px, 56vh, 440px) !important;
+    padding: 62px 10px 8px 10px !important;
+  }
+
+  .hero-typography {
+    min-height: clamp(330px, 52vh, 410px) !important;
+  }
+
+  .text-line {
+    font-size: clamp(1.45rem, 7.8vw, 2.3rem) !important;
+  }
+
+  .card-byte {
+    width: clamp(82px, 22vw, 105px) !important;
+    top: 13% !important;
+    left: 56% !important;
+  }
+
+  .card-nova {
+    width: clamp(84px, 22vw, 105px) !important;
+    top: 49% !important;
+    left: 26% !important;
+  }
+
+  .seal-badge {
+    width: clamp(74px, 19vw, 92px) !important;
+    top: 59% !important;
+    left: 70% !important;
+  }
+
+  .glass-card .avatar-container {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .glass-card .member-name {
+    font-size: 10px !important;
+  }
+
+  .glass-card .member-role {
+    font-size: 7.5px !important;
+  }
 }
 
 /* ==========================================================================
@@ -2276,7 +2417,7 @@ section, main, footer {
 }
 
 /* ==========================================================================
-   UNIFIED RESPONSIVE MEDIA QUERIES
+   UNIFIED RESPONSIVE MEDIA QUERIES - STRICT ORIENTATION PARITY
    ========================================================================== */
 @media (max-width: 1024px) {
   .excom-card {
@@ -2287,305 +2428,592 @@ section, main, footer {
 }
 
 @media (max-width: 992px) {
-  .tracks-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .pillars-grid-v2 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
   }
+  .footer-container {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+/* Phone & Tablet: Core Responsive Architecture (<= 768px) */
+@media (max-width: 768px) {
+  /* Zero Horizontal Scroll Enforced */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .section {
+    padding: clamp(24px, 4vh, 48px) clamp(12px, 3vw, 24px) !important;
+  }
+
+  .section-header {
+    margin-bottom: clamp(16px, 3vh, 26px) !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 5.8vw, 2.4rem) !important;
+  }
+
+  .section-subtitle {
+    font-size: clamp(12px, 2.6vw, 15px) !important;
+  }
+
+  .title-underline {
+    width: 50px !important;
+    height: 3px !important;
+    margin-top: 8px !important;
+  }
+
+  /* 2. Community Hub Stats: 3-column horizontal row */
+  .community-stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: clamp(6px, 1.8vw, 14px) !important;
+    text-align: center !important;
+  }
+
+  .stat-item {
+    padding: 8px 4px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .stat-label {
+    font-size: clamp(8px, 1.8vw, 10.5px) !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .stat-value {
+    font-size: clamp(1rem, 4vw, 1.5rem) !important;
+  }
+
+  .community-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .cta-pill {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 10px 16px !important;
+    font-size: clamp(12px, 2.5vw, 14px) !important;
+    min-height: 40px !important;
+  }
+
+  /* 3. Merged About & Pillars: Row 1 Side-by-Side 2-Column (1.2fr 1fr) */
   .about-split-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr !important;
+    gap: 0.65rem !important;
+    align-items: stretch !important;
   }
+
   .who-we-are-card,
   .core-mission-card {
-    grid-column: span 1 / -1;
+    grid-column: span 1 !important;
+    padding: 0.85rem !important;
+    border-radius: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
   }
-  .pillars-grid-v2 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  .nodal-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 24px 20px;
-    gap: 20px;
-  }
-  .nodal-info-col {
-    align-items: center;
-  }
-  .profile-frame {
-    width: clamp(180px, 35vw, 240px);
-    height: clamp(210px, 42vw, 290px);
-    margin: 0 auto;
-  }
-  .officer-quote {
-    border-left: none;
-    border-top: 3px solid var(--accent-green);
-    border-radius: 0 0 14px 14px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-  }
-  .quote-icon {
-    display: none;
-  }
-  .footer-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-}
 
-@media (max-width: 768px) {
-  .excom-card {
-    flex: 0 0 calc((100% - 18px) / 2);
-    width: calc((100% - 18px) / 2);
-    min-width: calc((100% - 18px) / 2);
+  .about-card-title,
+  .mission-card-title {
+    font-size: clamp(14px, 3.2vw, 18px) !important;
+    margin-bottom: 6px !important;
   }
-  .excom-nav-controls {
-    position: static;
-    margin-top: 12px;
-  }
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-}
 
-@media (max-width: 600px) {
-  .section {
-    padding: clamp(24px, 3.8vh, 36px) clamp(14px, 3.5vw, 20px);
+  .about-card-desc,
+  .mission-card-desc {
+    font-size: clamp(0.7rem, 2.5vw, 0.95rem) !important;
+    line-height: 1.45 !important;
   }
-  .section-header {
-    margin-bottom: 18px;
+
+  .who-highlights-divider {
+    margin: 10px 0 8px 0 !important;
   }
-  .section-title {
-    font-size: clamp(1.65rem, 6.5vw, 2.2rem);
-  }
-  .section-subtitle {
-    font-size: 13.5px;
-  }
-  .title-underline {
-    width: 60px;
-    height: 3px;
-    margin-top: 8px;
-  }
-  .community-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-  .cta-pill {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-  .community-stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    text-align: center;
-  }
-  .stat-item {
-    padding: 8px 4px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .stat-label {
-    font-size: 9.5px;
-    letter-spacing: 0.04em;
-  }
-  .stat-value {
-    font-size: clamp(1.15rem, 4.2vw, 1.4rem);
-  }
-  .story-heading,
-  .tracks-heading {
-    font-size: clamp(1.5rem, 5.5vw, 1.9rem);
-  }
-  .feature-list {
-    gap: 14px;
-  }
-  .feature-item {
-    gap: 12px;
-  }
-  .feature-icon-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-  }
-  .feature-title {
-    font-size: 15.5px;
-  }
-  .feature-desc {
-    font-size: 13px;
-  }
-  .mission-box {
-    padding: 16px 14px;
-    border-radius: 20px;
-  }
-  .mission-highlight-card {
-    padding: 16px 14px;
-    border-radius: 16px;
-    margin-bottom: 14px;
-  }
-  .mission-title {
-    font-size: 18px;
-  }
-  .mission-desc {
-    font-size: 13px;
-  }
-  .mission-highlights-list {
-    gap: 10px;
-  }
-  .mission-highlights-list li {
-    font-size: 13px;
-    gap: 10px;
-  }
-  .check-icon {
-    width: 20px;
-    height: 20px;
-  }
+
   .who-highlights-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
   }
-  .pillars-grid-v2,
-  .partners-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+
+  .who-highlight-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: clamp(0.65rem, 2.2vw, 0.82rem) !important;
   }
-  .pillar-card-v2,
-  .partner-card {
-    padding: 18px 16px;
-    border-radius: 18px;
+
+  .check-icon-circle {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
   }
-  .pillar-icon-box-v2,
-  .partner-logo-box {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 12px;
+
+  .check-icon-circle svg {
+    width: 10px !important;
+    height: 10px !important;
   }
-  .pillar-title,
-  .partner-title {
-    font-size: 18px;
+
+  .mission-window-bar {
+    padding: 4px 8px !important;
+    margin-bottom: 6px !important;
   }
-  .pillar-desc,
-  .partner-desc {
-    font-size: 13px;
+
+  .mission-file-name {
+    font-size: 9.5px !important;
   }
+
+  .window-dots-group {
+    gap: 4px !important;
+  }
+
+  .window-dot {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  .mission-footer-bar {
+    padding: 6px 8px !important;
+    margin-top: 8px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+
+  .mission-status-code,
+  .mission-dept-tag {
+    font-size: clamp(7.5px, 1.8vw, 9px) !important;
+  }
+
+  /* 3. Merged About & Pillars: Row 2 - 4 Pillars Horizontal 4-Track */
+  .pillars-grid-v2 {
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: clamp(140px, 46%, 220px) !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 0.6rem !important;
+    padding: 4px 2px 10px 2px !important;
+  }
+
+  .pillars-grid-v2::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .pillar-card-v2 {
+    scroll-snap-align: start !important;
+    padding: 12px 10px !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  .pillar-card-top {
+    margin-bottom: 8px !important;
+  }
+
+  .pillar-icon-box-v2 {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .pillar-icon-box-v2 svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .pillar-mono-pill {
+    font-size: 9px !important;
+    padding: 2px 6px !important;
+  }
+
+  .pillar-card-title {
+    font-size: clamp(12.5px, 2.6vw, 14.5px) !important;
+    margin-bottom: 4px !important;
+  }
+
+  .pillar-card-desc {
+    font-size: clamp(10.5px, 2.2vw, 12px) !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 5. Core Tech Tracks: 2-Column Side-by-Side Split (1fr 1fr) */
+  .tracks-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+  }
+
+  .tracks-left-col {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .tracks-heading {
+    font-size: clamp(14px, 3.4vw, 19px) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .tracks-text {
+    font-size: clamp(11px, 2.3vw, 13px) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 6px !important;
+  }
+
   .tracks-box-card {
-    padding: 18px 16px;
-    border-radius: 20px;
-    gap: 14px;
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    justify-content: center !important;
   }
+
+  .skill-bar-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  .skill-info {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
   .skill-name {
-    font-size: 14px;
+    font-size: clamp(11px, 2.4vw, 13px) !important;
   }
+
   .skill-percentage {
-    font-size: 13px;
+    font-size: clamp(10px, 2.2vw, 12px) !important;
   }
-  .nodal-card {
-    padding: 20px 14px;
-    border-radius: 20px;
+
+  .progress-track {
+    height: 6px !important;
+    border-radius: 4px !important;
   }
-  .profile-frame {
-    width: 150px;
-    height: 185px;
-    border-radius: 18px;
+
+  /* 5. Collaborative Partners: 3-Column Horizontal Row (repeat(3, 1fr)) */
+  .partners-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
   }
-  .officer-name {
-    font-size: 1.5rem;
+
+  .partner-card {
+    padding: 0.75rem !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
-  .officer-designation {
-    font-size: 14.5px;
+
+  .partner-logo-box {
+    width: clamp(32px, 8vw, 42px) !important;
+    height: clamp(32px, 8vw, 42px) !important;
+    margin-bottom: 6px !important;
   }
-  .officer-dept {
-    font-size: 13px;
-    margin-bottom: 12px;
+
+  .partner-logo-box svg {
+    width: clamp(18px, 4.5vw, 24px) !important;
+    height: clamp(18px, 4.5vw, 24px) !important;
   }
-  .officer-quote p {
-    font-size: 13.5px;
+
+  .partner-title {
+    font-size: clamp(12px, 2.8vw, 15px) !important;
+    margin-bottom: 2px !important;
   }
-  .contact-pill {
-    padding: 9px 16px;
-    font-size: 13px;
+
+  .partner-subtitle {
+    font-size: clamp(7.5px, 1.7vw, 9.5px) !important;
+    letter-spacing: 0.03em !important;
+    margin-bottom: 4px !important;
+    line-height: 1.2 !important;
   }
+
+  .partner-desc {
+    font-size: clamp(9.5px, 2vw, 11.5px) !important;
+    line-height: 1.35 !important;
+  }
+
+  /* 6. Executive Committee: Multi-Column Horizontal Layout (2-Card Row) */
+  .excom-grid {
+    gap: 0.6rem !important;
+    padding: 6px 0 14px 0 !important;
+  }
+
   .excom-card {
-    flex: 0 0 78%;
-    width: 78%;
-    min-width: 78%;
-    padding: 18px 12px;
-    border-radius: 20px;
+    flex: 0 0 calc((100% - 0.6rem) / 2) !important;
+    width: calc((100% - 0.6rem) / 2) !important;
+    min-width: calc((100% - 0.6rem) / 2) !important;
+    padding: 14px 8px !important;
+    border-radius: 18px !important;
   }
+
   .excom-avatar-wrapper {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 12px;
+    width: clamp(75px, 20vw, 95px) !important;
+    height: clamp(75px, 20vw, 95px) !important;
+    margin-bottom: 8px !important;
   }
+
   .excom-badge {
-    font-size: 10px;
-    padding: 3px 10px;
+    font-size: 8.5px !important;
+    padding: 2px 7px !important;
+    margin-bottom: 6px !important;
   }
+
   .excom-name {
-    font-size: 15.5px;
+    font-size: clamp(12.5px, 3vw, 14.5px) !important;
+    margin-bottom: 2px !important;
   }
+
   .excom-role {
-    font-size: 13px;
+    font-size: clamp(10.5px, 2.4vw, 12px) !important;
+    margin-bottom: 2px !important;
   }
+
   .excom-college {
-    font-size: 9px;
-    margin-bottom: 12px;
+    font-size: 8.5px !important;
+    margin-bottom: 8px !important;
   }
+
+  .excom-social-links {
+    gap: 6px !important;
+  }
+
+  .social-icon-btn {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .social-icon-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* 7. Nodal Officer: Side-by-Side Profile & Info */
+  .nodal-card {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    gap: 14px !important;
+    padding: 16px 14px !important;
+    text-align: left !important;
+    align-items: center !important;
+  }
+
+  .profile-frame {
+    width: clamp(95px, 25vw, 135px) !important;
+    height: clamp(120px, 32vw, 175px) !important;
+    border-radius: 16px !important;
+    margin: 0 !important;
+  }
+
+  .nodal-info-col {
+    align-items: flex-start !important;
+  }
+
+  .officer-name {
+    font-size: clamp(15px, 3.6vw, 20px) !important;
+  }
+
+  .officer-designation {
+    font-size: clamp(11.5px, 2.5vw, 13px) !important;
+  }
+
+  .officer-dept {
+    font-size: clamp(10.5px, 2.2vw, 12px) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .officer-quote {
+    padding: 8px 12px !important;
+    margin-bottom: 10px !important;
+    border-left: 2.5px solid var(--accent-green) !important;
+    border-top: none !important;
+    border-radius: 0 10px 10px 0 !important;
+  }
+
+  .officer-quote p {
+    font-size: clamp(10.5px, 2.2vw, 12px) !important;
+    line-height: 1.4 !important;
+  }
+
+  .contact-pill {
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    min-height: 36px !important;
+  }
+
+  /* 7. Registration Form: 2-Column Side-by-Side Inputs */
   .glass-form-card {
-    padding: 20px 14px;
-    border-radius: 20px;
+    padding: 18px 14px !important;
+    border-radius: 20px !important;
   }
+
   .form-row {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
+
+  .form-group label {
+    font-size: clamp(10.5px, 2.2vw, 12px) !important;
+    margin-bottom: 4px !important;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 8px 12px !important;
+    font-size: clamp(11.5px, 2.4vw, 13px) !important;
+    min-height: 40px !important;
+    border-radius: 12px !important;
+  }
+
   .checkbox-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
   }
+
   .custom-checkbox {
-    padding: 8px 10px;
-    gap: 8px;
+    padding: 8px 10px !important;
+    min-height: 40px !important;
+    border-radius: 12px !important;
   }
+
   .cb-label {
-    font-size: 12px;
+    font-size: clamp(10.5px, 2.2vw, 12px) !important;
   }
+
   .submit-btn {
-    width: 100%;
-    padding: 14px 20px;
-    font-size: 15px;
+    min-height: 44px !important;
+    font-size: clamp(13px, 2.8vw, 15px) !important;
+    padding: 10px 18px !important;
   }
+
+  /* 7. Contact Footer: Multi-Column Orientation */
   .site-footer {
-    padding: 28px 16px 16px;
-    margin-top: 20px;
+    padding: 24px 14px 14px !important;
   }
+
   .footer-container {
-    gap: 20px;
-    margin-bottom: 18px;
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  .footer-brand-title {
+    font-size: clamp(14px, 3.2vw, 18px) !important;
+  }
+
+  .footer-desc {
+    font-size: clamp(10px, 2vw, 11.5px) !important;
+  }
+
+  .footer-heading {
+    font-size: clamp(11.5px, 2.4vw, 13px) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: clamp(10px, 2vw, 11.5px) !important;
+    gap: 6px !important;
   }
 }
 
-@media (max-width: 400px) {
-  .checkbox-grid {
-    grid-template-columns: 1fr;
+/* Small Phone Viewports: <= 480px */
+@media (max-width: 480px) {
+  .section {
+    padding: clamp(20px, 3.5vh, 36px) clamp(10px, 2.5vw, 16px) !important;
   }
+
+  .about-split-grid {
+    grid-template-columns: 1.15fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+
+  .who-we-are-card,
+  .core-mission-card {
+    padding: 0.75rem !important;
+    border-radius: 16px !important;
+  }
+
+  .about-card-desc,
+  .mission-card-desc {
+    font-size: clamp(0.68rem, 2.4vw, 0.82rem) !important;
+  }
+
+  .pillars-grid-v2 {
+    grid-auto-columns: clamp(130px, 46%, 175px) !important;
+    gap: 0.5rem !important;
+  }
+
+  .tracks-grid {
+    gap: 0.5rem !important;
+  }
+
+  .tracks-box-card {
+    padding: 10px 10px !important;
+    gap: 8px !important;
+  }
+
+  .partners-grid {
+    gap: 0.35rem !important;
+  }
+
+  .partner-card {
+    padding: 0.55rem 0.35rem !important;
+    border-radius: 12px !important;
+  }
+
+  .partner-desc {
+    font-size: clamp(8.5px, 1.9vw, 10px) !important;
+  }
+
+  .excom-grid {
+    gap: 0.5rem !important;
+  }
+
   .excom-card {
-    flex: 0 0 84%;
-    width: 84%;
-    min-width: 84%;
+    flex: 0 0 calc((100% - 0.5rem) / 2) !important;
+    width: calc((100% - 0.5rem) / 2) !important;
+    min-width: calc((100% - 0.5rem) / 2) !important;
+    padding: 10px 6px !important;
+    border-radius: 14px !important;
   }
-  .community-stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
+
+  .excom-avatar-wrapper {
+    width: clamp(65px, 18vw, 80px) !important;
+    height: clamp(65px, 18vw, 80px) !important;
   }
-  .stat-value {
-    font-size: 1.1rem;
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
   }
-  .stat-label {
-    font-size: 8.5px;
+
+  .footer-col-brand {
+    grid-column: span 2 !important;
   }
 }
 
@@ -3342,22 +3770,30 @@ section, main, footer {
 
 @media (max-width: 640px) {
   .tenure-top-bar {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .tenure-action-btns {
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: auto;
   }
   .report-action-btn {
-    flex: 1;
-    justify-content: center;
+    padding: 8px 12px;
+    font-size: 11px;
+    min-height: 40px;
   }
   .report-meta-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 10px;
   }
   .conclusion-cta-btn {
-    width: 100%;
-    justify-content: center;
+    min-height: 40px;
   }
 }
 
@@ -3557,31 +3993,49 @@ section, main, footer {
 
 @media (max-width: 768px) {
   .posters-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  .poster-card {
+    aspect-ratio: 4 / 5 !important;
+    border-radius: 12px !important;
+  }
+  .poster-overlay {
+    padding: 6px !important;
+  }
+  .poster-zoom-action {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
   }
   .posters-top-bar {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .posters-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.35rem !important;
   }
   .poster-card {
-    border-radius: 12px;
+    border-radius: 10px !important;
   }
   .poster-overlay {
-    padding: 8px;
-  }
-  .poster-zoom-action span {
-    display: none;
+    padding: 4px !important;
   }
   .poster-zoom-action {
-    padding: 6px 8px;
+    font-size: 0.65rem !important;
+    padding: 3px 6px !important;
+  }
+  .poster-zoom-action span {
+    display: inline-block !important;
   }
 }
 
