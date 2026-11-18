@@ -116,6 +116,25 @@ section, main, footer {
   color: var(--accent-green);
 }
 
+.nav-newsletter-link {
+  position: relative;
+}
+
+.nav-newsletter-link::after {
+  content: "PDF";
+  font-size: 8.5px;
+  font-weight: 800;
+  background: var(--accent-green);
+  color: #021e66;
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  line-height: 1;
+}
+
 /* Main Hero Stage */
 .hero-stage {
   position: relative;

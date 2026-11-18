@@ -1,0 +1,566 @@
+/* ==========================================================================
+   SPACS NEWSLETTER ARCHIVE PAGE STYLES
+   ========================================================================== */
+
+/* Page Wrapper & Layout */
+.newsletter-body {
+  background: var(--bg-dark, #021e66);
+  color: #ffffff;
+  font-family: var(--font-body, 'Almarai', sans-serif);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.newsletter-page-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3.5vw, 48px);
+}
+
+/* Header & Back Navigation */
+.newsletter-navbar {
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(16px, 2.5vw, 28px);
+  margin-top: 16px;
+  margin-bottom: clamp(32px, 5vw, 60px);
+  border-radius: 50px;
+  background: rgba(4, 61, 204, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+.nav-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-brand-group .logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-brand-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.nav-brand-sub {
+  font-size: 11px;
+  color: var(--accent-green, #00e5a3);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-home-btn:hover {
+  background: var(--accent-green, #00e5a3);
+  color: #021e66;
+  border-color: var(--accent-green, #00e5a3);
+  transform: translateX(-3px);
+  box-shadow: 0 0 20px rgba(0, 229, 163, 0.4);
+}
+
+.back-home-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.back-home-btn:hover svg {
+  transform: translateX(-3px);
+}
+
+/* Page Hero Header */
+.newsletter-hero-header {
+  text-align: center;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.newsletter-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(0, 229, 163, 0.12);
+  border: 1px solid rgba(0, 229, 163, 0.4);
+  color: var(--accent-green, #00e5a3);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.newsletter-page-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.newsletter-page-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: clamp(14px, 1.6vw, 17px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Newsletter Summary Bar */
+.newsletter-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.summary-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.summary-stat-pill strong {
+  color: var(--accent-green, #00e5a3);
+}
+
+.summary-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.summary-hint svg {
+  color: var(--accent-green, #00e5a3);
+}
+
+/* Editions Cards Grid */
+.editions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.edition-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 2.8vw, 30px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.edition-card:hover {
+  border-color: rgba(0, 229, 163, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45), 0 0 30px rgba(0, 229, 163, 0.2);
+}
+
+.edition-card.active-edition {
+  border-color: var(--accent-green, #00e5a3);
+  background: linear-gradient(145deg, rgba(4, 61, 204, 0.4), rgba(0, 229, 163, 0.1));
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4), 0 0 35px rgba(0, 229, 163, 0.25);
+}
+
+.edition-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pdf-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(239, 68, 68, 0.08));
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f87171;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.2);
+}
+
+.edition-badge {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.badge-featured {
+  background: rgba(0, 229, 163, 0.18);
+  color: var(--accent-green, #00e5a3);
+  border: 1px solid rgba(0, 229, 163, 0.45);
+}
+
+.badge-archive {
+  background: rgba(192, 132, 252, 0.18);
+  color: #e9d5ff;
+  border: 1px solid rgba(192, 132, 252, 0.4);
+}
+
+.badge-inaugural {
+  background: rgba(0, 240, 255, 0.18);
+  color: #67e8f9;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+}
+
+.edition-card-body {
+  flex: 1;
+  margin-bottom: 22px;
+}
+
+.edition-tenure {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent-green, #00e5a3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.edition-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.edition-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.edition-meta-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.meta-chip svg {
+  color: var(--accent-green, #00e5a3);
+}
+
+/* Card Button Actions */
+.edition-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.edition-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.edition-read-btn {
+  flex: 1;
+  background: var(--accent-green, #00e5a3);
+  color: #021e66;
+  font-weight: 800;
+}
+
+.edition-read-btn:hover {
+  background: #ffffff;
+  color: #021e66;
+  box-shadow: 0 0 16px rgba(0, 229, 163, 0.4);
+}
+
+.edition-icon-btn {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.edition-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--accent-green, #00e5a3);
+}
+
+/* Live Embedded PDF Reader Stage */
+.pdf-reader-section {
+  margin-bottom: clamp(60px, 8vw, 100px);
+}
+
+.reader-stage-card {
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.reader-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px clamp(16px, 2.5vw, 28px);
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  flex-wrap: wrap;
+}
+
+.reader-edition-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reader-live-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-green, #00e5a3);
+  box-shadow: 0 0 10px var(--accent-green, #00e5a3);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.reader-active-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.reader-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(0, 229, 163, 0.5);
+  color: var(--accent-green, #00e5a3);
+}
+
+.toolbar-btn.primary-toolbar-btn {
+  background: rgba(0, 229, 163, 0.15);
+  border-color: rgba(0, 229, 163, 0.4);
+  color: var(--accent-green, #00e5a3);
+}
+
+.toolbar-btn.primary-toolbar-btn:hover {
+  background: var(--accent-green, #00e5a3);
+  color: #021e66;
+}
+
+/* PDF Embedded Frame */
+.pdf-frame-wrapper {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  min-height: 650px;
+  background: #1e293b;
+}
+
+.pdf-embed-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Fallback card if browser restricts iframe PDFs */
+.pdf-fallback-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 30, 102, 0.95);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.pdf-fallback-box {
+  max-width: 480px;
+  padding: 32px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Fullscreen mode on container */
+.reader-stage-card:fullscreen {
+  border-radius: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.reader-stage-card:fullscreen .pdf-frame-wrapper {
+  height: calc(100vh - 65px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .editions-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pdf-frame-wrapper {
+    height: 70vh;
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 640px) {
+  .newsletter-navbar {
+    border-radius: 24px;
+    padding: 10px 16px;
+  }
+  .nav-brand-title {
+    font-size: 13.5px;
+  }
+  .nav-brand-sub {
+    font-size: 9.5px;
+  }
+  .back-home-btn span {
+    display: none;
+  }
+  .back-home-btn {
+    padding: 8px 12px;
+  }
+  .newsletter-summary-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .reader-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .reader-toolbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .toolbar-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}
