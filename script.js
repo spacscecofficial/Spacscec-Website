@@ -25,7 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navLinks.forEach((link) => {
       link.classList.remove("active");
-      if (link.getAttribute("href") === `#${currentSectionId}`) {
+      const targetHref = link.getAttribute("href");
+      if (
+        targetHref === `#${currentSectionId}` ||
+        ((currentSectionId === "nodal-officer" || currentSectionId === "excom") &&
+          (targetHref === "#nodal-officer" || targetHref === "#excom"))
+      ) {
         link.classList.add("active");
       }
     });
